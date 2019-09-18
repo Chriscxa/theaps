@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SwipeTest</title>
-  <meta name="description" content="Using Bootstrap 4 flex, col... testing sdudy swipe in fluid-container">
+  <title>B4-responsive-4column.SwipeTest</title>
+  <!--<base target="_self">--><base href="." target="_self">
+  <meta name="description" content="B4-responsive-4column.SwipeTest">
   <meta name="google" value="notranslate">
+  <link rel="shortcut icon" href="">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
-  
-
-  
 
   <style type="text/css">
   body {
   overflow-x: hidden;
 }
-  .testos {
+  .swiper {
   --n: 1;
   display: flex;
  // align-items: center;
@@ -36,7 +34,7 @@
 }
 
 .smooth {
-  transition: transform calc(var(--f, 1)*.5s) cubic-bezier(0.35, 0.9, 1, 1);
+  transition: transform calc(var(--f, 1)*.3s) cubic-bezier(0.35, 0.9, 1, 1);
 }
   </style>
 
@@ -64,8 +62,8 @@
 			</ul>
 		</div>
 	</nav>
-<div class="testos">
-	<div class="container-fluid">
+<div class="swiper">
+	<div class="container-fluid --0">
 		<div class="row">
 			<div class="col-12 col-lg-10">
 				<div class="row">
@@ -144,90 +142,118 @@
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid">
+	<div class="container-fluid --1">
 		Groups
 	</div>
-	<div class="container-fluid">
+	<div class="container-fluid --2">
 		Notifications
 	</div>
 </div>
   
   <script>
-  const _C = document.querySelector('.testos'),
-N = _C.children.length,NF = 20;
+		const _C = document.querySelector('.swiper'),
+		N = _C.children.length,NF = 20;
 
-let i = 0,x0 = null,locked = false,w,ini,fin,rID = null;
+		let i = 0,x0 = null,locked = false,w,ini,fin,rID = null;
 
-function stopAni() {
-  cancelAnimationFrame(rID);
-  rID = null;
-};
+		function stopAni() {
+		  cancelAnimationFrame(rID);
+		  rID = null;
+		};
 
-function ani(cf = 0) {
-  _C.style.setProperty('--i', ini + (fin - ini) * cf / NF);
+		function ani(cf = 0) {
+		  _C.style.setProperty('--i', ini + (fin - ini) * cf / NF);
 
-  if (cf === NF) {
-    stopAni();
-    return;
-  }
+		  if (cf === NF) {
+			stopAni();
+			return;
+		  }
 
-  rID = requestAnimationFrame(ani.bind(this, ++cf));
-};
+		  rID = requestAnimationFrame(ani.bind(this, ++cf));
+		};
 
-function unify(e) {return e.changedTouches ? e.changedTouches[0] : e;};
+		function unify(e) {return e.changedTouches ? e.changedTouches[0] : e;};
 
-function lock(e) {
-  x0 = unify(e).clientX;
-  locked = true;
-};
+		function lock(e) {
+		  x0 = unify(e).clientX;
+		  locked = true;
+		};
 
-function drag(e) {
-  e.preventDefault();
+		function drag(e) {
+		  e.preventDefault();
 
-  if (locked) {
-    let dx = unify(e).clientX - x0,f = +(dx / w).toFixed(2);
+		  if (locked) {
+			let dx = unify(e).clientX - x0,f = +(dx / w).toFixed(2);
 
-    _C.style.setProperty('--i', i - f);
-  }
-};
+			_C.style.setProperty('--i', i - f);
+		  }
+		};
 
-function move(e) {
-  if (locked) {
-    let dx = unify(e).clientX - x0,
-    s = Math.sign(dx),
-    f = +(s * dx / w).toFixed(2);
+		function move(e) {
+		  if (locked) {
+			let dx = unify(e).clientX - x0,
+			s = Math.sign(dx),
+			f = +(s * dx / w).toFixed(2);
 
-    ini = i - s * f;
+			ini = i - s * f;
 
-    if ((i > 0 || s < 0) && (i < N - 1 || s > 0) && f > .2) {
-      i -= s;
-      f = 1 - f;
-    }
+			if ((i > 0 || s < 0) && (i < N - 1 || s > 0) && f > .2) {
+			  i -= s;
+			  f = 1 - f;
+			  
+				console.log("Animation fired swipe to end and page load/visible");
+				swpan = _C.querySelector('.--'+i)
+				if(!swpan.children.length){
+					scrollTo(0,0);
+					document.body.style.overflow = 'hidden'
+					console.log("Content must loaded");
+				}else {
+					console.log("Content is loaded / Ajax: " + swpan.children.length);
+					document.body.style.overflow = '';
+				}
+				
+				//load scrollPosition from SessionStorage / view
+				
+				
+				
+			}
 
-    fin = i;
-    ani();
-    x0 = null;
-    locked = false;
-  }
-};
+			fin = i;
+			ani();
+			x0 = null;
+			locked = false;
+			console.log("Reset after ani or break");
+		  }
+		};
 
-function size() {w = window.innerWidth;};
+		function size() {w = window.innerWidth;};
 
-size();
-_C.style.setProperty('--n', N);
+		size();
+		_C.style.setProperty('--n', N);
 
-addEventListener('resize', size, false);
+		addEventListener('resize', size, false);
 
-_C.addEventListener('mousedown', lock, false);
-_C.addEventListener('touchstart', lock, false);
+		_C.addEventListener('mousedown', lock, false);
+		_C.addEventListener('touchstart', lock, false);
 
-_C.addEventListener('mousemove', drag, false);
-_C.addEventListener('touchmove', drag, false);
+		_C.addEventListener('mousemove', drag, false);
+		_C.addEventListener('touchmove', drag, false);
 
-_C.addEventListener('mouseup', move, false);
-_C.addEventListener('touchend', move, false);
+		_C.addEventListener('mouseup', move, false);
+		_C.addEventListener('touchend', move, false);
   </script>
-
+  
+<script>
+  console.log(document.body.scrollHeight);
+  console.log(document.documentElement.clientHeight);
+  
+  let scrollHeight = Math.max(
+  document.body.scrollHeight, document.documentElement.scrollHeight,
+  document.body.offsetHeight, document.documentElement.offsetHeight,
+  document.body.clientHeight, document.documentElement.clientHeight
+); console.log(scrollHeight);
+	
+</script>
 
 
 </body></html>
