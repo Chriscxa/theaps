@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://www.codeply.com/api/run -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codeply preview</title>
+  <!--<base target="_self">--><base href="." target="_self">
+  <meta name="description" content="Using Bootstrap 4 grid classes to make a sidebar that switches to a top horizontal navbar on small mobile devices. Vertical side to horizontal top.">
+  <meta name="google" value="notranslate">
+  <link rel="shortcut icon" href="https://www.codeply.com/images/cp_ico.png">
+
+  
+  <!--stylesheets / link tags loaded here-->
+
+
+
+  <link rel="stylesheet" href="./Codeply preview_files/bootstrap.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+  
+
+  
+
+  <style type="text/css">
+  body {
+  overflow-x: hidden;
+}
+  .testos {
+  --n: 1;
+  display: flex;
+ // align-items: center;
+ // overflow-y: hidden;
+  width: 100%;
+  width: calc(var(--n)*100%);
+ // height: 50vw;
+  max-height: 100vh;
+  transform: translate(calc(var(--i, 0)/var(--n)*-100%));
+}
+
+.container-fluid {
+  width: 100%;
+  width: calc(100%/var(--n));
+//  user-select: none;
+ // pointer-events: none;
+}
+
+.smooth {
+  transition: transform calc(var(--f, 1)*.5s) cubic-bezier(0.35, 0.9, 1, 1);
+}
+  </style>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand navbar-light border-bottom">
+		<div class="collapse navbar-collapse flex-column flex-lg-row align-items-start">
+			<form class="form-inline w-100">
+				<a class="nav-link pl-0 text-nowrap" href="#"><i class="fa fa-bullseye fa-fw"></i> <span class="font-weight-bold">Brand</span></a>
+				<input class="form-control form-control-sm flex-fill" type="search" placeholder="Search" aria-label="Search">
+			</form>
+			<ul class="navbar-nav justify-content-lg-center justify-content-around w-100">
+				<li class="nav-item">
+					<a class="nav-link pl-0" href="#"><i class="fa fa-home fa-fw"></i> <span class="d-none d-md-inline">Feeds</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pl-0" href="#"><i class="fa fa-users fa-fw"></i> <span class="d-none d-md-inline">Groups</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pl-0" href="#"><i class="fa fa-bell fa-fw"></i> <span class="d-none d-md-inline">Notify</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pl-0" href="#"><i class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+<div class="testos">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 col-lg-10">
+				<div class="row">
+					<div class="col-3 col-xl-2 d-none d-lg-block">
+					 one
+					</div>
+					<div class="col-12 col-md-7 col-lg-7 col-xl-6">
+						<div class="card">
+						  <div class="card-header">
+							Featured
+						  </div>
+						  <div class="card-body">
+							<h5 class="card-title">Special title treatment</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						  </div>
+						</div>
+						<div class="card">
+						  <div class="card-header">
+							Featured
+						  </div>
+						  <div class="card-body">
+							<h5 class="card-title">Special title treatment</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						  </div>
+						</div>
+						<div class="card">
+						  <div class="card-header">
+							Featured
+						  </div>
+						  <div class="card-body">
+							<h5 class="card-title">Special title treatment</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						  </div>
+						</div>
+						<div class="card">
+						  <div class="card-header">
+							Featured
+						  </div>
+						  <div class="card-body">
+							<h5 class="card-title">Special title treatment</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						  </div>
+						</div>
+						<div class="card">
+						  <div class="card-header">
+							Featured
+						  </div>
+						  <div class="card-body">
+							<h5 class="card-title">Special title treatment</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						  </div>
+						</div>
+						<div class="card">
+						  <div class="card-header">
+							Featured
+						  </div>
+						  <div class="card-body">
+							<h5 class="card-title">Special title treatment</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						  </div>
+						</div>
+					</div>
+					<div class="col d-none d-md-block">
+					three
+					</div>
+				</div>
+			</div>
+			<div class="d-none d-xl-block">
+				Chat
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		Groups
+	</div>
+	<div class="container-fluid">
+		Notifications
+	</div>
+</div>
+  
+  
+  <!--scripts loaded here-->
+  
+  <script src="./Codeply preview_files/jquery.min.js.Download"></script>
+  <script src="./Codeply preview_files/popper.min.js.Download"></script>
+  <script src="./Codeply preview_files/bootstrap.min.js.Download"></script>
+  
+  <script>
+  const _C = document.querySelector('.testos'),
+N = _C.children.length,NF = 20;
+
+let i = 0,x0 = null,locked = false,w,ini,fin,rID = null;
+
+function stopAni() {
+  cancelAnimationFrame(rID);
+  rID = null;
+};
+
+function ani(cf = 0) {
+  _C.style.setProperty('--i', ini + (fin - ini) * cf / NF);
+
+  if (cf === NF) {
+    stopAni();
+    return;
+  }
+
+  rID = requestAnimationFrame(ani.bind(this, ++cf));
+};
+
+function unify(e) {return e.changedTouches ? e.changedTouches[0] : e;};
+
+function lock(e) {
+  x0 = unify(e).clientX;
+  locked = true;
+};
+
+function drag(e) {
+  e.preventDefault();
+
+  if (locked) {
+    let dx = unify(e).clientX - x0,f = +(dx / w).toFixed(2);
+
+    _C.style.setProperty('--i', i - f);
+  }
+};
+
+function move(e) {
+  if (locked) {
+    let dx = unify(e).clientX - x0,
+    s = Math.sign(dx),
+    f = +(s * dx / w).toFixed(2);
+
+    ini = i - s * f;
+
+    if ((i > 0 || s < 0) && (i < N - 1 || s > 0) && f > .2) {
+      i -= s;
+      f = 1 - f;
+    }
+
+    fin = i;
+    ani();
+    x0 = null;
+    locked = false;
+  }
+};
+
+function size() {w = window.innerWidth;};
+
+size();
+_C.style.setProperty('--n', N);
+
+addEventListener('resize', size, false);
+
+_C.addEventListener('mousedown', lock, false);
+_C.addEventListener('touchstart', lock, false);
+
+_C.addEventListener('mousemove', drag, false);
+_C.addEventListener('touchmove', drag, false);
+
+_C.addEventListener('mouseup', move, false);
+_C.addEventListener('touchend', move, false);
+  </script>
+  
+  <script>
+  
+  </script>
+
+
+
+</body></html>
