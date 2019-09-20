@@ -11,9 +11,6 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
   
-
-  
-
   <style type="text/css">
   body {
   overflow-x: hidden;
@@ -33,6 +30,7 @@
 .container-fluid {
   width: 100%;
   width: calc(100%/var(--n));
+  height: 100%;
 //  user-select: none;
  // pointer-events: none;
 }
@@ -75,6 +73,22 @@
 					 one
 					</div>
 					<div class="col-12 col-md-7 col-lg-6 col-xl-6">
+						<form class="m-3 p-3 bg-light">
+						  <div class="form-group">
+							<label for="exampleInputEmail1">Email address</label>
+							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+							<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+						  </div>
+						  <div class="form-group">
+							<label for="exampleInputPassword1">Password</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+						  </div>
+						  <div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" id="exampleCheck1">
+							<label class="form-check-label" for="exampleCheck1">Check me out</label>
+						  </div>
+						  <button type="submit" class="btn btn-primary">Submit</button>
+						</form>
 						<div class="card m-3">
 						  <div class="card-header">
 							Featured
@@ -218,7 +232,7 @@
 		</div>
 	</div>
 	<div class="container-fluid --1">
-		Groups
+		<p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p><p>Groups</p>
 	</div>
 	<div class="container-fluid --2">
 		Notifications
@@ -261,10 +275,26 @@
 			let dx = unify(e).clientX - x0,f = +(dx / w).toFixed(2);
 
 			_C.style.setProperty('--i', i - f);
-			console.log("drag started");
 		  }
 		};
 
+		function scrollable(h){
+			if(h >= document.documentElement.clientHeight){
+				document.body.style.overflow = ''
+				return true;
+			} else {
+				document.body.style.overflow = 'hidden'
+			}
+		}
+		
+		function setscrheight(target){
+			h = target.offsetHeight;
+			if(scrollable(h)){
+				_C.style.setProperty("max-height", h+"px");
+				_C.style.setProperty("overflow-y", "hidden");
+			};
+		}
+		
 		function move(e) {
 		  if (locked) {
 			let dx = unify(e).clientX - x0,
@@ -274,34 +304,23 @@
 			ini = i - s * f;
 
 			if ((i > 0 || s < 0) && (i < N - 1 || s > 0) && f > .2) {
-			  i -= s;
-			  f = 1 - f;
+				i -= s;
+				f = 1 - f;
 				
-				// evt test in drag()
-				console.log("Animation fired swipe to end and page load/visible");
-				console.log("Switched to: " + i + " from: " + (ini + (fin-ini)));
 				target = _C.querySelector('.--'+i);
+				
 				start = ini + (fin-ini);
-								pheight = window.pageYOffset;
-				scrtarget = sessionStorage.getItem(target);
+				pheight = window.pageYOffset;
+				st = sessionStorage.getItem('st'+i);
+				sessionStorage.setItem('st'+start,pheight);
+				
+				setscrheight(target);
 				if(!target.children.length){
 					scrollTo(0,0);
-					document.body.style.overflow = 'hidden'
-					console.log("Content must loaded");
+					target.innerHTML += '<p>Fire Ajax here!</p>';
 				}else {
-					scrollTo(0,600);
-					console.log("Content is loaded / Ajax: " + target.children.length);
-					document.body.style.overflow = '';
+					scrollTo(0,st);
 				}
-				
-				//load scrollPosition from SessionStorage / view
-				
-				if (sessionStorage.getItem(start)) {
-				  sessionStorage.getItem(start);
-				} else {
-					sessionStorage.setItem(start, pheight);
-				}
-
 				
 			}
 
@@ -309,7 +328,6 @@
 			ani();
 			x0 = null;
 			locked = false;
-			console.log("Reset after ani or break");
 		  }
 		};
 
@@ -329,19 +347,6 @@
 		_C.addEventListener('mouseup', move, false);
 		_C.addEventListener('touchend', move, false);
   </script>
-  
-<script>
-  console.log("complete dokumentHeight get via scrollHeight: " + document.body.scrollHeight);
-  console.log("windowInnerHeight: " + document.documentElement.clientHeight);
-  console.log("Scroll-Y-Position-From-Top: " + window.pageYOffset);
-  
-  let scrollHeight = Math.max(
-  document.body.scrollHeight, document.documentElement.scrollHeight,
-  document.body.offsetHeight, document.documentElement.offsetHeight,
-  document.body.clientHeight, document.documentElement.clientHeight
-); console.log("Scroll-Y-Position-From-Top supported all Browsers: " + scrollHeight);
-	
-</script>
 
 
 </body></html>
